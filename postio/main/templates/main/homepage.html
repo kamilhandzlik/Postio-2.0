@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+    <style type="text/css">
+        .sidenav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #1b1b1b;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+        .sidenav a, .dropdown-btn, .sidenav .user-info {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .sidenav a:hover, .dropdown-btn:hover, .sidenav .user-info {
+            color: #f1f1f1;
+        }
+
+        .dropdown-container {
+            display: none;
+            background-color: #262626;
+            padding-left: 8px;
+        }
+
+        .main {
+            margin-left: 240px;
+            padding: 0px 10px;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <title>{% block title %}CoWork Connect Site{% endblock %}</title>
+    {% block head_extra %}{% endblock %}
+</head>
+<body>
+<div class="sidenav">
+
+    <a href="/admin">PANEL ADMINA</a>
+</div>
+</body>
+</html>
