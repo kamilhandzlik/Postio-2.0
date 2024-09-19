@@ -1,0 +1,85 @@
+{% extends "main/homepage.html" %}
+{% block title %}
+Tworzenie konta
+{% endblock %}
+
+
+{% block content %}
+<form method="post" class="form-group">
+    {% csrf_token %}
+    <div class="form-group">
+        <label>Nazwa użytkownik</label>
+        <br>
+        {{ form.username }}
+        <br>
+        {{ form.username.help_text|safe }}
+        {{ form.username.errors }}
+    </div>
+    <div class="form-group">
+        <label>Imię</label>
+        <br>
+        {{ form.first_name }}
+        {{ form.first_name.errors }}
+    </div>
+    <div class="form-group">
+        <label>Nazwisko</label>
+        <br>
+        {{ form.last_name }}
+        {{ form.last_name.errors }}
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <br>
+        {{ form.email }}
+        {{ form.email.errors }}
+    </div>
+    <div class="form-group">
+        <label>Wiek</label>
+        <br>
+        {{ form.age }}
+        {{ form.age.errors }}
+    </div>
+    <div class="form-group">
+        <label>Hasło</label>
+        <br>
+        <div class="input-group">
+            {{ form.password1 }}
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="togglePassword1">Pokaż</button>
+            </div>
+        </div>
+        {{ form.password1.help_text|safe }}
+
+    </div>
+    <div class="form-group">
+        <label>Powtórz hasło</label>
+        <br>
+        <div class="input-group">
+            {{ form.password2 }}
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="togglePassword2">Pokaż</button>
+            </div>
+        </div>
+        {{ form.password2.help_text|safe }}
+        {{ form.password2.errors }}
+    </div>
+    <button type="submit" class="btn btn-success" style="margin-top: 20px">Zarejestruj się</button>
+</form>
+
+
+<script>
+    document.getElementById('togglePassword1').addEventListener('click', function () {
+        var passwordField1 = document.getElementById('id_password1');
+        var type1 = passwordField1.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordField1.setAttribute('type', type1);
+        this.textContent = type1 === 'password' ? 'Pokaż' : 'Ukryj';
+    });
+
+    document.getElementById('togglePassword2').addEventListener('click', function () {
+        var passwordField2 = document.getElementById('id_password2');
+        var type2 = passwordField2.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordField2.setAttribute('type', type2);
+        this.textContent = type2 === 'password' ? 'Pokaż' : 'Ukryj';
+    });
+</script>
+{% endblock %}
