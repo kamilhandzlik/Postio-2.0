@@ -8,7 +8,7 @@ Tworzenie konta
 <form method="post" class="form-group">
     {% csrf_token %}
     <div class="form-group">
-        <label>Nazwa użytkownik</label>
+        <label><h5>Nazwa użytkownik</h5></label>
         <br>
         {{ form.username }}
         <br>
@@ -16,31 +16,31 @@ Tworzenie konta
         {{ form.username.errors }}
     </div>
     <div class="form-group">
-        <label>Imię</label>
+        <label><h5>Imię</h5></label>
         <br>
         {{ form.first_name }}
         {{ form.first_name.errors }}
     </div>
     <div class="form-group">
-        <label>Nazwisko</label>
+        <label><h5>Nazwisko</h5></label>
         <br>
         {{ form.last_name }}
         {{ form.last_name.errors }}
     </div>
     <div class="form-group">
-        <label>Email</label>
+        <label><h5>Email</h5></label>
         <br>
         {{ form.email }}
         {{ form.email.errors }}
     </div>
     <div class="form-group">
-        <label>Wiek</label>
+        <label><h5>Wiek</h5></label>
         <br>
         {{ form.age }}
         {{ form.age.errors }}
     </div>
     <div class="form-group">
-        <label>Hasło</label>
+        <label><h5>Hasło</h5></label>
         <br>
         <div class="input-group">
             {{ form.password1 }}
@@ -52,7 +52,7 @@ Tworzenie konta
 
     </div>
     <div class="form-group">
-        <label>Powtórz hasło</label>
+        <label><h5>Powtórz hasło</h5></label>
         <br>
         <div class="input-group">
             {{ form.password2 }}

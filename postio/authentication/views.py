@@ -9,7 +9,7 @@ from .forms import RegistrationForm
 class RegistrationView(CreateView):
     form_class = RegistrationForm
     template_name = 'authentication/register.html'
-    success_url = reverse_lazy('homepage')
+    success_url = reverse_lazy('login')
 
 
 class CustomLoginView(LoginView):
