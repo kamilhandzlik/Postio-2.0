@@ -13,6 +13,7 @@ class RegistrationView(CreateView):
     success_url = reverse_lazy('login')
 
     def form_valid(self, form):
+        user = form.save()
         return super().form_valid(form)
 
 

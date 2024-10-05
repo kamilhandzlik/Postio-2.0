@@ -4,12 +4,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 from django.utils.translation import gettext as _
 
-
 class RegistrationForm(UserCreationForm):
     username = forms.CharField(
         label=_('Użytkownik'),
         help_text=_(
-            'Wymagania dla nazwy użytkownika.\nMaksymalnie 150 znaków.\nTylko litery, cyfry i następujące znaki @/./+/-/_.'),
+            'Wymagania dla nazwy użytkownika.\nMaksymalnie 150 znaków.\nTylko litery, cyfry i następujące znaki @/./+/-/_.'
+        ),
         error_messages={
             'required': _('To pole jest wymagane.'),
             'invalid': _('Wprowadź poprawną nazwę użytkownika.'),
@@ -19,23 +19,19 @@ class RegistrationForm(UserCreationForm):
     first_name = forms.CharField(
         max_length=150,
         label=_('Imię'),
-        error_messages={
-            'required': _('To pole jest wymagane.'),
-        },
+        error_messages={'required': _('To pole jest wymagane.'),}
     )
     last_name = forms.CharField(
         max_length=150,
         label=_('Nazwisko'),
-        error_messages={
-            'required': _('To pole jest wymagane.'),
-        },
+        error_messages={'required': _('To pole jest wymagane.'),}
     )
     email = forms.EmailField(
         label=_('Email'),
         error_messages={
             'required': _('To pole jest wymagane.'),
             'invalid': _('Wprowadź poprawny adres email.')
-        },
+        }
     )
     age = forms.IntegerField(
         label=_('Wiek'),
@@ -60,7 +56,7 @@ class RegistrationForm(UserCreationForm):
             'required': _("To pole jest wymagane."),
             'password_too_short': _("Hasło jest zbyt krótkie. Powinno zawierać co najmniej 8 znaków."),
             'password_common': _("Hasło jest zbyt powszechne."),
-            'password_entirely_numeric': _("Hasło nie może być całkowicie numeryczne."),
+            'password_entirely_numeric': _("Hasło nie może być całkowicie numeryczne.")
         }
     )
     password2 = forms.CharField(
@@ -81,8 +77,7 @@ class RegistrationForm(UserCreationForm):
         age = self.cleaned_data.get('age')
         if age < 13:
             raise forms.ValidationError(_("Musisz mieć co najmniej 13 lat."))
-        else:
-            return age
+        return age
 
     def clean_password1(self):
         password1 = self.cleaned_data.get('password1')
@@ -91,12 +86,9 @@ class RegistrationForm(UserCreationForm):
                 validate_password(password1, self.instance)
             except forms.ValidationError as e:
                 error_messages = {
-                    'password_too_short': self.fields['password1'].error_messages.get('password_too_short',
-                                                                                      "Hasło jest zbyt krótkie."),
-                    'password_too_common': self.fields['password1'].error_messages.get('password_common',
-                                                                                       "Hasło jest zbyt powszechne."),
-                    'password_entirely_numeric': self.fields['password1'].error_messages.get(
-                        'password_entirely_numeric', "Hasło nie może być całkowicie numeryczne."),
+                    'password_too_short': self.fields['password1'].error_messages.get('password_too_short', "Hasło jest zbyt krótkie."),
+                    'password_too_common': self.fields['password1'].error_messages.get('password_common', "Hasło jest zbyt powszechne."),
+                    'password_entirely_numeric': self.fields['password1'].error_messages.get('password_entirely_numeric', "Hasło nie może być całkowicie numeryczne."),
                 }
                 raise forms.ValidationError([error_messages.get(error.code, str(error)) for error in e.error_list])
 
@@ -110,10 +102,10 @@ class RegistrationForm(UserCreationForm):
             )
         return password2
 
-
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.set_password(self.cleaned_data['password1'])
+        user.set_password(self.cleaned_data["password1"])
         if commit:
             user.save()
         return user
+
